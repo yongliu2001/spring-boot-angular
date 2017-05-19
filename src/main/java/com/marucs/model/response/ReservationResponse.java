@@ -1,4 +1,4 @@
-package com.marucs.response;
+package com.marucs.model.response;
 
 import com.marucs.model.Links;
 
