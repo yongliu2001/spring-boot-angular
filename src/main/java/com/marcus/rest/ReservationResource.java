@@ -1,11 +1,11 @@
-package com.marucs.rest;
+package com.marcus.rest;
 
-import com.marucs.entity.RoomEntity;
-import com.marucs.model.request.ReservationRequest;
-import com.marucs.model.response.ReservationResponse;
-import com.marucs.repository.PageableRoomRepository;
-import com.marucs.repository.RoomRepository;
-import com.marucs.rest.converter.RoomEntityToReservationResponseConverter;
+import com.marcus.entity.RoomEntity;
+import com.marcus.model.request.ReservationRequest;
+import com.marcus.model.response.ReservationResponse;
+import com.marcus.repository.PageableRoomRepository;
+import com.marcus.repository.RoomRepository;
+import com.marcus.rest.converter.RoomEntityToReservationResponseConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

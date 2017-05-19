@@ -1,4 +1,4 @@
-package com.marucs.entity;
+package com.marcus.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

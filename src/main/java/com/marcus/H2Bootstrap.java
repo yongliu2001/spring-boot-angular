@@ -1,7 +1,7 @@
-package com.marucs;
+package com.marcus;
 
-import com.marucs.entity.RoomEntity;
-import com.marucs.repository.RoomRepository;
+import com.marcus.entity.RoomEntity;
+import com.marcus.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

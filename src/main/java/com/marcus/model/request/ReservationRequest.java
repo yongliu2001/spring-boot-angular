@@ -1,4 +1,4 @@
-package com.marucs.model.request;
+package com.marcus.model.request;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

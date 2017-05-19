@@ -1,4 +1,4 @@
-package com.marucs.config;
+package com.marcus.config;
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * Created by yongl on 19/05/2017.
  */
 
-@EnableJpaRepositories("com.marucs.repository")
+@EnableJpaRepositories("com.marcus.repository")
 @EnableTransactionManagement
 public class DatabaseConfig {
 }

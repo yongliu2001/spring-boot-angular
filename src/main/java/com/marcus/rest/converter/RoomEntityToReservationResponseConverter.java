@@ -1,10 +1,10 @@
-package com.marucs.rest.converter;
+package com.marcus.rest.converter;
 
-import com.marucs.entity.RoomEntity;
-import com.marucs.model.Links;
-import com.marucs.model.Self;
-import com.marucs.model.response.ReservationResponse;
-import com.marucs.rest.ResourceConstants;
+import com.marcus.entity.RoomEntity;
+import com.marcus.model.Links;
+import com.marcus.model.Self;
+import com.marcus.model.response.ReservationResponse;
+import com.marcus.rest.ResourceConstants;
 import org.springframework.core.convert.converter.Converter;
 
 /**

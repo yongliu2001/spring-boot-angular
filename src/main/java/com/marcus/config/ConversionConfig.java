@@ -1,6 +1,6 @@
-package com.marucs.config;
+package com.marcus.config;
 
-import com.marucs.rest.converter.RoomEntityToReservationResponseConverter;
+import com.marcus.rest.converter.RoomEntityToReservationResponseConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ConversionServiceFactoryBean;

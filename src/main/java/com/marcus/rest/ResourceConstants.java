@@ -1,4 +1,4 @@
-package com.marucs.rest;
+package com.marcus.rest;
 
 /**
  * Created by yongliu on 18/5/17.

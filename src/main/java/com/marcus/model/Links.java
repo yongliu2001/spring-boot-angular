@@ -1,4 +1,4 @@
-package com.marucs.model;
+package com.marcus.model;
 
 /**
  * Created by yongliu on 18/5/17.

@@ -1,4 +1,4 @@
-package com.marucs.config;
+package com.marcus.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;

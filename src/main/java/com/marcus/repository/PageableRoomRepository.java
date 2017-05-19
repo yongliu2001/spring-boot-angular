@@ -1,6 +1,6 @@
-package com.marucs.repository;
+package com.marcus.repository;
 
-import com.marucs.entity.RoomEntity;
+import com.marcus.entity.RoomEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;

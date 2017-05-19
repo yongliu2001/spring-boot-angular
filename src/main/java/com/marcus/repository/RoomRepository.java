@@ -1,9 +1,7 @@
-package com.marucs.repository;
+package com.marcus.repository;
 
-import com.marucs.entity.RoomEntity;
+import com.marcus.entity.RoomEntity;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
 
 /**
  * Created by yongl on 19/05/2017.

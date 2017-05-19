@@ -1,6 +1,6 @@
-package com.marucs.model.response;
+package com.marcus.model.response;
 
-import com.marucs.model.Links;
+import com.marcus.model.Links;
 
 /**
  * Created by yongliu on 18/5/17.
