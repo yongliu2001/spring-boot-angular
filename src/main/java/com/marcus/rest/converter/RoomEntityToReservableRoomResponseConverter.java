@@ -3,21 +3,22 @@ package com.marcus.rest.converter;
 import com.marcus.entity.RoomEntity;
 import com.marcus.model.Links;
 import com.marcus.model.Self;
-import com.marcus.model.response.ReservationResponse;
+import com.marcus.model.response.ReservableRoomResponse;
 import com.marcus.rest.ResourceConstants;
 import org.springframework.core.convert.converter.Converter;
 
 /**
  * Created by yongliu on 19/5/17.
  */
-public class RoomEntityToReservationResponseConverter implements Converter<RoomEntity, ReservationResponse> {
+public class RoomEntityToReservableRoomResponseConverter implements Converter<RoomEntity, ReservableRoomResponse> {
 
     @Override
-    public ReservationResponse convert(RoomEntity roomEntity) {
+    public ReservableRoomResponse convert(RoomEntity roomEntity) {
 
-        ReservationResponse response = new ReservationResponse();
+        ReservableRoomResponse response = new ReservableRoomResponse();
         response.setRoomNumber(roomEntity.getRoomNumber());
         response.setPrice(Integer.valueOf(roomEntity.getPrice()));
+        response.setId(roomEntity.getId());
 
         Self self = new Self();
         self.setRef(ResourceConstants.ROOM_RESERVATION_V1+ "/" + roomEntity.getId());

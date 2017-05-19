@@ -9,7 +9,9 @@ import java.time.LocalDate;
  */
 public class ReservationRequest {
 
-    private long id;
+    private Long id;
+
+    private Long roomId;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkin;
@@ -20,18 +22,26 @@ public class ReservationRequest {
     public ReservationRequest() {
     }
 
-    public ReservationRequest(long id, LocalDate checkin, LocalDate checkout) {
-        this.id = id;
+    public ReservationRequest(Long roomId, LocalDate checkin, LocalDate checkout) {
+        this.roomId = roomId;
         this.checkin = checkin;
         this.checkout = checkout;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 
     public LocalDate getCheckin() {

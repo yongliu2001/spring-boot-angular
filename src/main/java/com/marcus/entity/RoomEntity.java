@@ -2,6 +2,8 @@ package com.marcus.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by yongliu on 19/05/2017.
@@ -20,6 +22,9 @@ public class RoomEntity {
 
     @NotNull
     private String price;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<ReservationEntity> reservations;
 
     public RoomEntity() {
     }
@@ -51,5 +56,20 @@ public class RoomEntity {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public List<ReservationEntity> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<ReservationEntity> reservations) {
+        this.reservations = reservations;
+    }
+
+    public void addReservation(ReservationEntity reservation) {
+        if (reservation == null) {
+            reservations = new ArrayList<>();
+        }
+        reservations.add(reservation);
     }
 }
