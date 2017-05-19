@@ -1,7 +1,14 @@
 package com.marucs.rest;
 
+import com.marucs.entity.RoomEntity;
 import com.marucs.model.request.ReservationRequest;
 import com.marucs.model.response.ReservationResponse;
+import com.marucs.repository.PageableRoomRepository;
+import com.marucs.repository.RoomRepository;
+import com.marucs.rest.converter.RoomEntityToReservationResponseConverter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,12 +25,28 @@ import java.time.LocalDate;
 @RequestMapping(ResourceConstants.ROOM_RESERVATION_V1)
 public class ReservationResource {
 
-    @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<ReservationResponse> getAvailableRooms(
-            @RequestParam(value = "checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkin,
-            @RequestParam(value = "checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkout) {
+    @Autowired
+    PageableRoomRepository pageableRoomRepository;
 
-        return new ResponseEntity<>(new ReservationResponse(), HttpStatus.OK);
+    @Autowired
+    RoomRepository roomRepository;
+
+    @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Page<ReservationResponse> getAvailableRooms(
+            @RequestParam(value = "checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkin,
+            @RequestParam(value = "checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkout,
+            Pageable pageable) {
+
+        Page<RoomEntity> roomEntities = pageableRoomRepository.findAll(pageable);
+
+        return roomEntities.map(new RoomEntityToReservationResponseConverter());
+    }
+
+    @RequestMapping(path = "/{roomId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<RoomEntity> getRoomId(
+            @PathVariable Long roomId) {
+
+        return new ResponseEntity<>(roomRepository.findById(roomId), HttpStatus.OK);
     }
 
     @RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE
