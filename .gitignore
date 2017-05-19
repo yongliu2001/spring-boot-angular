@@ -1,5 +1,5 @@
 .gradle
-/build/
+build
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
@@ -23,3 +23,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### ANGULAR @ ###
+
+node_modules
