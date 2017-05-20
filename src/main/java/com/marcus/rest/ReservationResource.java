@@ -27,6 +27,7 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping(ResourceConstants.ROOM_RESERVATION_V1)
+@CrossOrigin
 public class ReservationResource {
 
     @Autowired
