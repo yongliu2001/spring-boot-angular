@@ -9,8 +9,6 @@ import java.time.LocalDate;
  */
 public class ReservationRequest {
 
-    private Long id;
-
     private Long roomId;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -28,13 +26,6 @@ public class ReservationRequest {
         this.checkout = checkout;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getRoomId() {
         return roomId;

@@ -30,16 +30,16 @@ import java.time.LocalDate;
 public class ReservationResource {
 
     @Autowired
-    PageableRoomRepository pageableRoomRepository;
+    private PageableRoomRepository pageableRoomRepository;
 
     @Autowired
-    RoomRepository roomRepository;
+    private RoomRepository roomRepository;
 
     @Autowired
-    ReservationRepository reservationRepository;
+    private ReservationRepository reservationRepository;
 
     @Autowired
-    ConversionService conversionService;
+    private ConversionService conversionService;
 
     @RequestMapping(path = "", method = RequestMethod.GET
             , produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
