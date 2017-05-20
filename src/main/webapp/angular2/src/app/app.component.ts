@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Http, Response } from '@angular/http';
+import {Http, RequestOptions, Response, Headers} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
@@ -12,10 +12,13 @@ import "rxjs/add/operator/catch";
 })
 export class AppComponent implements OnInit {
 
+  private baseUrl: string = "http://localhost:8080";
   public submitted: boolean;
   roomSearch: FormGroup;
   rooms: Room[];
-  private baseUrl: string = "http://localhost:8080";
+  currentCheckin: string;
+  currentCheckout: string;
+  request: ReserveRoomRequest;
 
   constructor(private http: Http) {
   }
@@ -25,6 +28,12 @@ export class AppComponent implements OnInit {
       checkin: new FormControl(''),
       checkout: new FormControl('')
     });
+
+    const roomSearchValueChanges$ = this.roomSearch.valueChanges;
+    roomSearchValueChanges$.subscribe(valueChange => {
+      this.currentCheckin = valueChange.checkin;
+      this.currentCheckout = valueChange.checkout;
+    })
     // this.rooms = ROOMS;
   }
 
@@ -41,10 +50,22 @@ export class AppComponent implements OnInit {
 
   reserveRoom(roomId: string) {
     console.log("Room id for reservation "+ roomId);
+    this.request = new ReserveRoomRequest(roomId, this.currentCheckin, this.currentCheckout);
+    this.createReservation(this.request);
+  }
+
+  createReservation(request: ReserveRoomRequest) {
+    let body = JSON.stringify(request);
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let option = new RequestOptions({headers: headers});
+
+    this.http.post(this.baseUrl + "/room/reservation/v1", body, option)
+      .subscribe(response => console.log(response));
   }
 
   getAll(): Observable<Room[]> {
-    return this.http.get(this.baseUrl + "/room/reservation/v1?checkin=2017-03-10&checkout=2017-03-15").map(this.mapRoom);
+    return this.http.get(
+      this.baseUrl + "/room/reservation/v1?checkin="+this.currentCheckin+"&checkout="+ this.currentCheckout).map(this.mapRoom);
   }
 
   mapRoom(response: Response): Room[] {
@@ -62,6 +83,18 @@ export interface Room {
   roomNumber: string;
   price: string;
   links: string;
+}
+
+export class ReserveRoomRequest {
+  roomId: string;
+  checkin: string;
+  checkout:string;
+
+  constructor(roomId: string, checkin: string, checkout: string) {
+    this.roomId = roomId;
+    this.checkin = checkin;
+    this.checkout = checkout;
+  }
 }
 
 // var ROOMS: Room[] = [
